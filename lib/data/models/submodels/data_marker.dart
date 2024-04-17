@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+import 'package:task_app/domain/subentity/data_marker.dart';
 part 'data_marker.freezed.dart';
 part 'data_marker.g.dart';
 
@@ -35,4 +36,12 @@ class DateStatModel with _$DateStatModel {
       day: DateTime.now().day,
       month: DateTime.now().month,
       year: DateTime.now().year);
+
+  DateMarker _convert(DataMarkerModel date) =>
+      DateMarker(day: date.day, month: date.month, year: date.year);
+
+  DateStat toEntity() => DateStat(
+      create: _convert(create),
+      execution: _convert(execution),
+      done: _convert(done));
 }

@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:task_app/data/models/submodels/data_marker.dart';
+import 'package:task_app/domain/entity/task_entity.dart';
+import 'package:task_app/domain/subentity/task_status.dart';
 
 part 'task_model.freezed.dart';
 part 'task_model.g.dart';
@@ -21,4 +23,13 @@ class TaskModel with _$TaskModel {
   }) = _TaskModel;
   factory TaskModel.fromJson(Map<String, dynamic> json) =>
       _$TaskModelFromJson(json);
+
+  TaskEntity toEntity() => TaskEntity(
+      id: id,
+      title: title,
+      description: description,
+      deadline: deadline,
+      owner: owner,
+      status: convertStatus(status),
+      stat: stat.toEntity());
 }
