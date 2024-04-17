@@ -1,0 +1,1 @@
+enum UseCaseStatus { success, failed }
