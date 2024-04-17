@@ -45,3 +45,9 @@ class DeleteTaskParams extends IParams {
   const DeleteTaskParams({required this.id});
   final String id;
 }
+
+class UpdateTaskParams extends IParams {
+  const UpdateTaskParams({required this.id, required this.task});
+  final String id;
+  final TaskModel task;
+}
