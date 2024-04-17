@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:task_app/core/exception/hive_exceptions.dart';
 import 'package:task_app/core/params/task_params.dart';
@@ -33,8 +34,10 @@ class TaskLocalDataSourceImpl extends TaskLocalDataSource {
 
   @override
   Future<void> deleteTask(DeleteTaskParams params) async {
+    debugPrint("Task to id to delete: ${params.id}");
     try {
-      await localTaskDB.delete(params.id);
+      final index = await _findTaskIndex(params.id);
+      await localTaskDB.deleteAt(index);
     } catch (e) {
       throw HiveException(e.toString());
     }
@@ -46,5 +49,10 @@ class TaskLocalDataSourceImpl extends TaskLocalDataSource {
     } else {
       return response;
     }
+  }
+
+  Future<int> _findTaskIndex(String id) async {
+    final tasks = await getTasks();
+    return tasks.indexWhere((element) => element.id == id);
   }
 }
