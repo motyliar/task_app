@@ -40,3 +40,8 @@ class TaskParams extends IParams {
         isPriroity: isPriority ?? false);
   }
 }
+
+class DeleteTaskParams extends IParams {
+  const DeleteTaskParams({required this.id});
+  final String id;
+}
