@@ -22,7 +22,7 @@ class TaskModelAdapter extends TypeAdapter<TaskModel> {
       deadline: fields[2] as DateTime,
       owner: fields[3] as String,
       status: fields[4] as String,
-      stat: fields[5] as DateStatModel,
+      stat: fields[5] as DataStatM,
       isPriroity: fields[6] as bool,
       id: fields[7] as String,
     );
@@ -72,7 +72,7 @@ _$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
       deadline: DateTime.parse(json['deadline'] as String),
       owner: json['owner'] as String,
       status: json['status'] as String,
-      stat: DateStatModel.fromJson(json['stat'] as Map<String, dynamic>),
+      stat: DataStatM.fromJson(json['stat'] as Map<String, dynamic>),
       isPriroity: json['isPriroity'] as bool,
       id: json['id'] as String,
     );

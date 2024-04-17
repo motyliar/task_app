@@ -1,5 +1,6 @@
 import 'package:hive_flutter/adapters.dart';
 import 'package:task_app/data/models/submodels/data_marker.dart';
+import 'package:task_app/data/models/submodels/data_stat_m.dart';
 import 'package:task_app/data/models/task_model.dart';
 
 class HiveInit {
@@ -13,6 +14,7 @@ Future<void> _register() async {
   await Hive.initFlutter();
   Hive
     ..registerAdapter(TaskModelAdapter())
+    ..registerAdapter(DataStatMAdapter())
     ..registerAdapter(DataMarkerModelAdapter());
 }
 

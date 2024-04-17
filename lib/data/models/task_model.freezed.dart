@@ -31,7 +31,7 @@ mixin _$TaskModel {
   @HiveField(4)
   String get status => throw _privateConstructorUsedError;
   @HiveField(5)
-  DateStatModel get stat => throw _privateConstructorUsedError;
+  DataStatM get stat => throw _privateConstructorUsedError;
   @HiveField(6)
   bool get isPriroity => throw _privateConstructorUsedError;
   @HiveField(7)
@@ -54,11 +54,11 @@ abstract class $TaskModelCopyWith<$Res> {
       @HiveField(2) DateTime deadline,
       @HiveField(3) String owner,
       @HiveField(4) String status,
-      @HiveField(5) DateStatModel stat,
+      @HiveField(5) DataStatM stat,
       @HiveField(6) bool isPriroity,
       @HiveField(7) String id});
 
-  $DateStatModelCopyWith<$Res> get stat;
+  $DataStatMCopyWith<$Res> get stat;
 }
 
 /// @nodoc
@@ -107,7 +107,7 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
       stat: null == stat
           ? _value.stat
           : stat // ignore: cast_nullable_to_non_nullable
-              as DateStatModel,
+              as DataStatM,
       isPriroity: null == isPriroity
           ? _value.isPriroity
           : isPriroity // ignore: cast_nullable_to_non_nullable
@@ -121,8 +121,8 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $DateStatModelCopyWith<$Res> get stat {
-    return $DateStatModelCopyWith<$Res>(_value.stat, (value) {
+  $DataStatMCopyWith<$Res> get stat {
+    return $DataStatMCopyWith<$Res>(_value.stat, (value) {
       return _then(_value.copyWith(stat: value) as $Val);
     });
   }
@@ -142,12 +142,12 @@ abstract class _$$TaskModelImplCopyWith<$Res>
       @HiveField(2) DateTime deadline,
       @HiveField(3) String owner,
       @HiveField(4) String status,
-      @HiveField(5) DateStatModel stat,
+      @HiveField(5) DataStatM stat,
       @HiveField(6) bool isPriroity,
       @HiveField(7) String id});
 
   @override
-  $DateStatModelCopyWith<$Res> get stat;
+  $DataStatMCopyWith<$Res> get stat;
 }
 
 /// @nodoc
@@ -194,7 +194,7 @@ class __$$TaskModelImplCopyWithImpl<$Res>
       stat: null == stat
           ? _value.stat
           : stat // ignore: cast_nullable_to_non_nullable
-              as DateStatModel,
+              as DataStatM,
       isPriroity: null == isPriroity
           ? _value.isPriroity
           : isPriroity // ignore: cast_nullable_to_non_nullable
@@ -241,7 +241,7 @@ class _$TaskModelImpl extends _TaskModel {
   final String status;
   @override
   @HiveField(5)
-  final DateStatModel stat;
+  final DataStatM stat;
   @override
   @HiveField(6)
   final bool isPriroity;
@@ -298,7 +298,7 @@ abstract class _TaskModel extends TaskModel {
       @HiveField(2) required final DateTime deadline,
       @HiveField(3) required final String owner,
       @HiveField(4) required final String status,
-      @HiveField(5) required final DateStatModel stat,
+      @HiveField(5) required final DataStatM stat,
       @HiveField(6) required final bool isPriroity,
       @HiveField(7) required final String id}) = _$TaskModelImpl;
   const _TaskModel._() : super._();
@@ -323,7 +323,7 @@ abstract class _TaskModel extends TaskModel {
   String get status;
   @override
   @HiveField(5)
-  DateStatModel get stat;
+  DataStatM get stat;
   @override
   @HiveField(6)
   bool get isPriroity;

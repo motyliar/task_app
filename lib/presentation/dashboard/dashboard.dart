@@ -6,18 +6,25 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:gap/gap.dart';
 import 'package:task_app/core/constans/export.dart';
 import 'package:task_app/core/l10n/l10n.dart';
+import 'package:task_app/core/params/task_params.dart';
 import 'package:task_app/core/router/route_animation.dart';
+import 'package:task_app/core/services/get_it/task_container.dart';
 import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/core/themes/text_style.dart';
 import 'package:task_app/domain/entity/task_entity.dart';
 import 'package:task_app/domain/subentity/data_marker.dart';
 import 'package:task_app/domain/subentity/task_status.dart';
+import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
+import 'package:task_app/presentation/dashboard/business/logic/dashboard_helpers.dart';
 import 'package:task_app/presentation/dashboard/business/switch_button.dart';
 import 'package:task_app/presentation/dashboard/widgets/custom_sliver_appbar.dart';
 import 'package:task_app/presentation/dashboard/widgets/main_label_text.dart';
 import 'package:task_app/presentation/dashboard/widgets/single_task.dart';
 
 const double _emptySpaceToEndPage = 100;
+TextEditingController _titleController = TextEditingController();
+TextEditingController _descriptionController = TextEditingController();
+TextEditingController _ownerController = TextEditingController();
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -71,8 +78,15 @@ class Dashboard extends StatelessWidget {
           onPressed: () {
             showModalBottomSheet(
                 context: context,
-                builder: (context) => BlocProvider(
-                      create: (context) => SwitchButtonCubit(),
+                builder: (context) => MultiBlocProvider(
+                      providers: [
+                        BlocProvider(
+                          create: (context) => SwitchButtonCubit(),
+                        ),
+                        BlocProvider(
+                          create: (context) => taskLocator<TasksHandlerCubit>(),
+                        ),
+                      ],
                       child: Form(
                           child: Padding(
                         padding:
@@ -80,11 +94,13 @@ class Dashboard extends StatelessWidget {
                         child: Column(
                           children: [
                             TextFormField(
+                              controller: _titleController,
                               maxLength: 50,
                               decoration:
                                   const InputDecoration(hintText: 'title'),
                             ),
                             TextFormField(
+                              controller: _descriptionController,
                               maxLength: 500,
                               minLines: 4,
                               maxLines: 10,
@@ -98,6 +114,7 @@ class Dashboard extends StatelessWidget {
                                   width:
                                       MediaQuery.of(context).size.width * 0.5,
                                   child: TextFormField(
+                                    controller: _ownerController,
                                     maxLength: 20,
                                     decoration: const InputDecoration(
                                         hintText: 'owner'),
@@ -129,16 +146,27 @@ class Dashboard extends StatelessWidget {
                             Align(
                               alignment: Alignment.bottomRight,
                               child: TextButton(
-                                  onPressed: () => showDatePicker(
-                                          context: context,
-                                          initialDate: DateTime.now(),
-                                          firstDate: DateTime.now(),
-                                          lastDate: DateTime(2026))
-                                      .then((value) => null),
+                                  onPressed: () async {
+                                    await DashboardHelpers.pickDeadlineDate(
+                                            context)
+                                        .then((response) => print(response));
+                                  },
                                   child: const Text("choose date")),
                             ),
-                            ElevatedButton(
-                                onPressed: () {}, child: const Text("ADD")),
+                            BlocBuilder<TasksHandlerCubit, TasksHandlerState>(
+                              builder: (context, state) {
+                                return ElevatedButton(
+                                    onPressed: () => context
+                                        .read<TasksHandlerCubit>()
+                                        .addTask(TaskParams(
+                                            title: _titleController.text,
+                                            description:
+                                                _descriptionController.text,
+                                            deadline: DateTime.now(),
+                                            owner: _ownerController.text)),
+                                    child: const Text("ADD"));
+                              },
+                            ),
                           ],
                         ),
                       )),

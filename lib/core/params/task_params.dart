@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:task_app/core/params/i_params.dart';
 import 'package:task_app/data/models/submodels/data_marker.dart';
+import 'package:task_app/data/models/submodels/data_stat_m.dart';
 import 'package:task_app/data/models/task_model.dart';
 import 'package:uuid/uuid.dart';
 
@@ -20,8 +21,8 @@ class TaskParams extends IParams {
     this.isPriority = false,
   });
 
-  final stat = DateStatModel(
-      create: DateStatModel.currentDay(),
+  final stat = DataStatM(
+      create: DataStatM.currentDay(),
       execution: DataMarkerModel.defaultValue(),
       done: DataMarkerModel.defaultValue());
 
