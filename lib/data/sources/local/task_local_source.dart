@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:task_app/core/exception/hive_exceptions.dart';
 import 'package:task_app/core/params/task_params.dart';
 import 'package:task_app/data/models/task_model.dart';
 
@@ -11,6 +12,10 @@ class TaskLocalDataSourceImpl extends TaskLocalDataSource {
 
   @override
   Future<void> addTask(TaskParams params) async {
-    await localTaskDB.add(params.returnModel());
+    try {
+      await localTaskDB.add(params.returnModel());
+    } catch (e) {
+      throw HiveException(e.toString());
+    }
   }
 }
