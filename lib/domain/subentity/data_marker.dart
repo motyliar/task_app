@@ -10,6 +10,11 @@ class DateMarker {
     month = DateTime.now().month;
     year = DateTime.now().year;
   }
+
+  static DateMarker currentDay() => DateMarker(
+      day: DateTime.now().day,
+      month: DateTime.now().month,
+      year: DateTime.now().year);
 }
 
 class DateStat {

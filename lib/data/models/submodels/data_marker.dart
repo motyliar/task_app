@@ -14,6 +14,9 @@ class DataMarkerModel with _$DataMarkerModel {
   }) = _DataMarkerModel;
   factory DataMarkerModel.fromJson(Map<String, dynamic> json) =>
       _$DataMarkerModelFromJson(json);
+
+  DataMarkerModel defaultValue() =>
+      const DataMarkerModel(day: 0, month: 0, year: 0);
 }
 
 @freezed
@@ -27,4 +30,9 @@ class DateStatModel with _$DateStatModel {
   }) = _DateStatModel;
   factory DateStatModel.fromJson(Map<String, dynamic> json) =>
       _$DateStatModelFromJson(json);
+
+  static DataMarkerModel currentDay() => DataMarkerModel(
+      day: DateTime.now().day,
+      month: DateTime.now().month,
+      year: DateTime.now().year);
 }
