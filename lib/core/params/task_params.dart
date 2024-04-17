@@ -2,7 +2,8 @@
 import 'package:task_app/core/params/i_params.dart';
 import 'package:task_app/data/models/submodels/data_marker.dart';
 import 'package:task_app/data/models/task_model.dart';
-import 'package:task_app/domain/subentity/data_marker.dart';
+import 'package:uuid/uuid.dart';
+
 import 'package:task_app/domain/subentity/task_status.dart';
 
 class TaskParams extends IParams {
@@ -25,7 +26,10 @@ class TaskParams extends IParams {
       done: DataMarkerModel.defaultValue());
 
   TaskModel returnModel() {
+    var uuid = const Uuid();
+    var uniqueId = uuid.v4();
     return TaskModel(
+        id: uniqueId,
         title: title,
         description: description,
         deadline: deadline,
