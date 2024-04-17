@@ -34,6 +34,8 @@ mixin _$TaskModel {
   DateStatModel get stat => throw _privateConstructorUsedError;
   @HiveField(6)
   bool get isPriroity => throw _privateConstructorUsedError;
+  @HiveField(7)
+  String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +55,8 @@ abstract class $TaskModelCopyWith<$Res> {
       @HiveField(3) String owner,
       @HiveField(4) String status,
       @HiveField(5) DateStatModel stat,
-      @HiveField(6) bool isPriroity});
+      @HiveField(6) bool isPriroity,
+      @HiveField(7) String id});
 
   $DateStatModelCopyWith<$Res> get stat;
 }
@@ -78,6 +81,7 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
     Object? status = null,
     Object? stat = null,
     Object? isPriroity = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -108,6 +112,10 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
           ? _value.isPriroity
           : isPriroity // ignore: cast_nullable_to_non_nullable
               as bool,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -135,7 +143,8 @@ abstract class _$$TaskModelImplCopyWith<$Res>
       @HiveField(3) String owner,
       @HiveField(4) String status,
       @HiveField(5) DateStatModel stat,
-      @HiveField(6) bool isPriroity});
+      @HiveField(6) bool isPriroity,
+      @HiveField(7) String id});
 
   @override
   $DateStatModelCopyWith<$Res> get stat;
@@ -159,6 +168,7 @@ class __$$TaskModelImplCopyWithImpl<$Res>
     Object? status = null,
     Object? stat = null,
     Object? isPriroity = null,
+    Object? id = null,
   }) {
     return _then(_$TaskModelImpl(
       title: null == title
@@ -189,6 +199,10 @@ class __$$TaskModelImplCopyWithImpl<$Res>
           ? _value.isPriroity
           : isPriroity // ignore: cast_nullable_to_non_nullable
               as bool,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -203,7 +217,8 @@ class _$TaskModelImpl extends _TaskModel {
       @HiveField(3) required this.owner,
       @HiveField(4) required this.status,
       @HiveField(5) required this.stat,
-      @HiveField(6) required this.isPriroity})
+      @HiveField(6) required this.isPriroity,
+      @HiveField(7) required this.id})
       : super._();
 
   factory _$TaskModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -230,10 +245,13 @@ class _$TaskModelImpl extends _TaskModel {
   @override
   @HiveField(6)
   final bool isPriroity;
+  @override
+  @HiveField(7)
+  final String id;
 
   @override
   String toString() {
-    return 'TaskModel(title: $title, description: $description, deadline: $deadline, owner: $owner, status: $status, stat: $stat, isPriroity: $isPriroity)';
+    return 'TaskModel(title: $title, description: $description, deadline: $deadline, owner: $owner, status: $status, stat: $stat, isPriroity: $isPriroity, id: $id)';
   }
 
   @override
@@ -250,13 +268,14 @@ class _$TaskModelImpl extends _TaskModel {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.stat, stat) || other.stat == stat) &&
             (identical(other.isPriroity, isPriroity) ||
-                other.isPriroity == isPriroity));
+                other.isPriroity == isPriroity) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title, description, deadline,
-      owner, status, stat, isPriroity);
+      owner, status, stat, isPriroity, id);
 
   @JsonKey(ignore: true)
   @override
@@ -280,7 +299,8 @@ abstract class _TaskModel extends TaskModel {
       @HiveField(3) required final String owner,
       @HiveField(4) required final String status,
       @HiveField(5) required final DateStatModel stat,
-      @HiveField(6) required final bool isPriroity}) = _$TaskModelImpl;
+      @HiveField(6) required final bool isPriroity,
+      @HiveField(7) required final String id}) = _$TaskModelImpl;
   const _TaskModel._() : super._();
 
   factory _TaskModel.fromJson(Map<String, dynamic> json) =
@@ -307,6 +327,9 @@ abstract class _TaskModel extends TaskModel {
   @override
   @HiveField(6)
   bool get isPriroity;
+  @override
+  @HiveField(7)
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$TaskModelImplCopyWith<_$TaskModelImpl> get copyWith =>

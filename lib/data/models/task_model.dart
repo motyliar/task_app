@@ -17,6 +17,7 @@ class TaskModel with _$TaskModel {
     @HiveField(4) required String status,
     @HiveField(5) required DateStatModel stat,
     @HiveField(6) required bool isPriroity,
+    @HiveField(7) required String id,
   }) = _TaskModel;
   factory TaskModel.fromJson(Map<String, dynamic> json) =>
       _$TaskModelFromJson(json);

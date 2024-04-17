@@ -24,13 +24,14 @@ class TaskModelAdapter extends TypeAdapter<TaskModel> {
       status: fields[4] as String,
       stat: fields[5] as DateStatModel,
       isPriroity: fields[6] as bool,
+      id: fields[7] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, TaskModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class TaskModelAdapter extends TypeAdapter<TaskModel> {
       ..writeByte(5)
       ..write(obj.stat)
       ..writeByte(6)
-      ..write(obj.isPriroity);
+      ..write(obj.isPriroity)
+      ..writeByte(7)
+      ..write(obj.id);
   }
 
   @override
@@ -71,6 +74,7 @@ _$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
       status: json['status'] as String,
       stat: DateStatModel.fromJson(json['stat'] as Map<String, dynamic>),
       isPriroity: json['isPriroity'] as bool,
+      id: json['id'] as String,
     );
 
 Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
@@ -82,4 +86,5 @@ Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
       'status': instance.status,
       'stat': instance.stat,
       'isPriroity': instance.isPriroity,
+      'id': instance.id,
     };
