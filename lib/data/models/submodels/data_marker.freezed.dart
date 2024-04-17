@@ -1,0 +1,430 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'data_marker.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+DataMarkerModel _$DataMarkerModelFromJson(Map<String, dynamic> json) {
+  return _DataMarkerModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DataMarkerModel {
+  @HiveField(0)
+  int get day => throw _privateConstructorUsedError;
+  @HiveField(1)
+  int get month => throw _privateConstructorUsedError;
+  @HiveField(2)
+  int get year => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DataMarkerModelCopyWith<DataMarkerModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DataMarkerModelCopyWith<$Res> {
+  factory $DataMarkerModelCopyWith(
+          DataMarkerModel value, $Res Function(DataMarkerModel) then) =
+      _$DataMarkerModelCopyWithImpl<$Res, DataMarkerModel>;
+  @useResult
+  $Res call(
+      {@HiveField(0) int day, @HiveField(1) int month, @HiveField(2) int year});
+}
+
+/// @nodoc
+class _$DataMarkerModelCopyWithImpl<$Res, $Val extends DataMarkerModel>
+    implements $DataMarkerModelCopyWith<$Res> {
+  _$DataMarkerModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? day = null,
+    Object? month = null,
+    Object? year = null,
+  }) {
+    return _then(_value.copyWith(
+      day: null == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DataMarkerModelImplCopyWith<$Res>
+    implements $DataMarkerModelCopyWith<$Res> {
+  factory _$$DataMarkerModelImplCopyWith(_$DataMarkerModelImpl value,
+          $Res Function(_$DataMarkerModelImpl) then) =
+      __$$DataMarkerModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@HiveField(0) int day, @HiveField(1) int month, @HiveField(2) int year});
+}
+
+/// @nodoc
+class __$$DataMarkerModelImplCopyWithImpl<$Res>
+    extends _$DataMarkerModelCopyWithImpl<$Res, _$DataMarkerModelImpl>
+    implements _$$DataMarkerModelImplCopyWith<$Res> {
+  __$$DataMarkerModelImplCopyWithImpl(
+      _$DataMarkerModelImpl _value, $Res Function(_$DataMarkerModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? day = null,
+    Object? month = null,
+    Object? year = null,
+  }) {
+    return _then(_$DataMarkerModelImpl(
+      day: null == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: null == month
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DataMarkerModelImpl extends _DataMarkerModel {
+  const _$DataMarkerModelImpl(
+      {@HiveField(0) required this.day,
+      @HiveField(1) required this.month,
+      @HiveField(2) required this.year})
+      : super._();
+
+  factory _$DataMarkerModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DataMarkerModelImplFromJson(json);
+
+  @override
+  @HiveField(0)
+  final int day;
+  @override
+  @HiveField(1)
+  final int month;
+  @override
+  @HiveField(2)
+  final int year;
+
+  @override
+  String toString() {
+    return 'DataMarkerModel(day: $day, month: $month, year: $year)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DataMarkerModelImpl &&
+            (identical(other.day, day) || other.day == day) &&
+            (identical(other.month, month) || other.month == month) &&
+            (identical(other.year, year) || other.year == year));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, day, month, year);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataMarkerModelImplCopyWith<_$DataMarkerModelImpl> get copyWith =>
+      __$$DataMarkerModelImplCopyWithImpl<_$DataMarkerModelImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DataMarkerModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DataMarkerModel extends DataMarkerModel {
+  const factory _DataMarkerModel(
+      {@HiveField(0) required final int day,
+      @HiveField(1) required final int month,
+      @HiveField(2) required final int year}) = _$DataMarkerModelImpl;
+  const _DataMarkerModel._() : super._();
+
+  factory _DataMarkerModel.fromJson(Map<String, dynamic> json) =
+      _$DataMarkerModelImpl.fromJson;
+
+  @override
+  @HiveField(0)
+  int get day;
+  @override
+  @HiveField(1)
+  int get month;
+  @override
+  @HiveField(2)
+  int get year;
+  @override
+  @JsonKey(ignore: true)
+  _$$DataMarkerModelImplCopyWith<_$DataMarkerModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DateStatModel _$DateStatModelFromJson(Map<String, dynamic> json) {
+  return _DateStatModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DateStatModel {
+  @HiveField(0)
+  DataMarkerModel get create => throw _privateConstructorUsedError;
+  @HiveField(1)
+  DataMarkerModel get execution => throw _privateConstructorUsedError;
+  @HiveField(2)
+  DataMarkerModel get done => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DateStatModelCopyWith<DateStatModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DateStatModelCopyWith<$Res> {
+  factory $DateStatModelCopyWith(
+          DateStatModel value, $Res Function(DateStatModel) then) =
+      _$DateStatModelCopyWithImpl<$Res, DateStatModel>;
+  @useResult
+  $Res call(
+      {@HiveField(0) DataMarkerModel create,
+      @HiveField(1) DataMarkerModel execution,
+      @HiveField(2) DataMarkerModel done});
+
+  $DataMarkerModelCopyWith<$Res> get create;
+  $DataMarkerModelCopyWith<$Res> get execution;
+  $DataMarkerModelCopyWith<$Res> get done;
+}
+
+/// @nodoc
+class _$DateStatModelCopyWithImpl<$Res, $Val extends DateStatModel>
+    implements $DateStatModelCopyWith<$Res> {
+  _$DateStatModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? create = null,
+    Object? execution = null,
+    Object? done = null,
+  }) {
+    return _then(_value.copyWith(
+      create: null == create
+          ? _value.create
+          : create // ignore: cast_nullable_to_non_nullable
+              as DataMarkerModel,
+      execution: null == execution
+          ? _value.execution
+          : execution // ignore: cast_nullable_to_non_nullable
+              as DataMarkerModel,
+      done: null == done
+          ? _value.done
+          : done // ignore: cast_nullable_to_non_nullable
+              as DataMarkerModel,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataMarkerModelCopyWith<$Res> get create {
+    return $DataMarkerModelCopyWith<$Res>(_value.create, (value) {
+      return _then(_value.copyWith(create: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataMarkerModelCopyWith<$Res> get execution {
+    return $DataMarkerModelCopyWith<$Res>(_value.execution, (value) {
+      return _then(_value.copyWith(execution: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataMarkerModelCopyWith<$Res> get done {
+    return $DataMarkerModelCopyWith<$Res>(_value.done, (value) {
+      return _then(_value.copyWith(done: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$DateStatModelImplCopyWith<$Res>
+    implements $DateStatModelCopyWith<$Res> {
+  factory _$$DateStatModelImplCopyWith(
+          _$DateStatModelImpl value, $Res Function(_$DateStatModelImpl) then) =
+      __$$DateStatModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@HiveField(0) DataMarkerModel create,
+      @HiveField(1) DataMarkerModel execution,
+      @HiveField(2) DataMarkerModel done});
+
+  @override
+  $DataMarkerModelCopyWith<$Res> get create;
+  @override
+  $DataMarkerModelCopyWith<$Res> get execution;
+  @override
+  $DataMarkerModelCopyWith<$Res> get done;
+}
+
+/// @nodoc
+class __$$DateStatModelImplCopyWithImpl<$Res>
+    extends _$DateStatModelCopyWithImpl<$Res, _$DateStatModelImpl>
+    implements _$$DateStatModelImplCopyWith<$Res> {
+  __$$DateStatModelImplCopyWithImpl(
+      _$DateStatModelImpl _value, $Res Function(_$DateStatModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? create = null,
+    Object? execution = null,
+    Object? done = null,
+  }) {
+    return _then(_$DateStatModelImpl(
+      create: null == create
+          ? _value.create
+          : create // ignore: cast_nullable_to_non_nullable
+              as DataMarkerModel,
+      execution: null == execution
+          ? _value.execution
+          : execution // ignore: cast_nullable_to_non_nullable
+              as DataMarkerModel,
+      done: null == done
+          ? _value.done
+          : done // ignore: cast_nullable_to_non_nullable
+              as DataMarkerModel,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DateStatModelImpl extends _DateStatModel {
+  const _$DateStatModelImpl(
+      {@HiveField(0) required this.create,
+      @HiveField(1) required this.execution,
+      @HiveField(2) required this.done})
+      : super._();
+
+  factory _$DateStatModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DateStatModelImplFromJson(json);
+
+  @override
+  @HiveField(0)
+  final DataMarkerModel create;
+  @override
+  @HiveField(1)
+  final DataMarkerModel execution;
+  @override
+  @HiveField(2)
+  final DataMarkerModel done;
+
+  @override
+  String toString() {
+    return 'DateStatModel(create: $create, execution: $execution, done: $done)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DateStatModelImpl &&
+            (identical(other.create, create) || other.create == create) &&
+            (identical(other.execution, execution) ||
+                other.execution == execution) &&
+            (identical(other.done, done) || other.done == done));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, create, execution, done);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DateStatModelImplCopyWith<_$DateStatModelImpl> get copyWith =>
+      __$$DateStatModelImplCopyWithImpl<_$DateStatModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DateStatModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DateStatModel extends DateStatModel {
+  const factory _DateStatModel(
+      {@HiveField(0) required final DataMarkerModel create,
+      @HiveField(1) required final DataMarkerModel execution,
+      @HiveField(2) required final DataMarkerModel done}) = _$DateStatModelImpl;
+  const _DateStatModel._() : super._();
+
+  factory _DateStatModel.fromJson(Map<String, dynamic> json) =
+      _$DateStatModelImpl.fromJson;
+
+  @override
+  @HiveField(0)
+  DataMarkerModel get create;
+  @override
+  @HiveField(1)
+  DataMarkerModel get execution;
+  @override
+  @HiveField(2)
+  DataMarkerModel get done;
+  @override
+  @JsonKey(ignore: true)
+  _$$DateStatModelImplCopyWith<_$DateStatModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
