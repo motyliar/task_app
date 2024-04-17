@@ -19,4 +19,9 @@ class TaskEntity {
   final TaskStatus status;
   final DateStat stat;
   final bool isPriority;
+
+  @override
+  String toString() {
+    return "Task(id: $id, title: $title, description: $description, deadline: $deadline, owner: $owner, status: $status, stat: $stat, isPriority: $isPriority)";
+  }
 }
