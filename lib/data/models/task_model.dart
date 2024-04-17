@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
-import 'package:task_app/data/models/submodels/data_marker.dart';
 import 'package:task_app/data/models/submodels/data_stat_m.dart';
 
 import 'package:task_app/domain/entity/task_entity.dart';
