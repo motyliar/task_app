@@ -7,6 +7,8 @@ class HiveException implements Exception {
       HiveException("Failed add task: $message");
   factory HiveException.get(String message) =>
       HiveException("Failed get tasks: $message");
+  factory HiveException.delete(String message) =>
+      HiveException("Failed delete tasks: $message");
 
   @override
   String toString() {
