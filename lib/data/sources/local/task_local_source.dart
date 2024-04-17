@@ -6,6 +6,7 @@ import 'package:task_app/data/models/task_model.dart';
 abstract class TaskLocalDataSource {
   Future<void> addTask(TaskParams params);
   Future<List<TaskModel>> getTasks();
+  Future<void> deleteTask(DeleteTaskParams params);
 }
 
 class TaskLocalDataSourceImpl extends TaskLocalDataSource {
@@ -27,6 +28,15 @@ class TaskLocalDataSourceImpl extends TaskLocalDataSource {
       return _handlingResponse(tasks);
     } catch (e) {
       throw HiveException.get(e.toString());
+    }
+  }
+
+  @override
+  Future<void> deleteTask(DeleteTaskParams params) async {
+    try {
+      await localTaskDB.delete(params.id);
+    } catch (e) {
+      throw HiveException(e.toString());
     }
   }
 

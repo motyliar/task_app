@@ -26,7 +26,6 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isPriority = false;
     final l10n = context.l10n;
     return BlocProvider(
       create: (context) => SwitchButtonCubit(),
