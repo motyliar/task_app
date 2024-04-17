@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:task_app/data/models/submodels/data_marker.dart';
-import 'package:task_app/domain/subentity/data_marker.dart';
+
 part 'task_model.freezed.dart';
 part 'task_model.g.dart';
 

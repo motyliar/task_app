@@ -17,5 +17,5 @@ Future<void> _register() async {
 }
 
 Future<void> _openBoxes() async {
-  await Hive.openBox<TaskModel>("task-data");
+  await Hive.openBox<TaskModel>('task-data');
 }

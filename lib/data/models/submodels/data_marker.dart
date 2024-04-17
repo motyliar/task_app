@@ -15,7 +15,7 @@ class DataMarkerModel with _$DataMarkerModel {
   factory DataMarkerModel.fromJson(Map<String, dynamic> json) =>
       _$DataMarkerModelFromJson(json);
 
-  DataMarkerModel defaultValue() =>
+  static DataMarkerModel defaultValue() =>
       const DataMarkerModel(day: 0, month: 0, year: 0);
 }
 
