@@ -2,10 +2,15 @@
 
     "@@locale": "en",
     "language": "English",
-    "appTitle": "Welcome to Task App",
+    "appTitle": "Task App",
     "allTasksLabel": "All tasks",
     "delete": "Delete",
     "edit": "Edit",
-    "deadline": "Deadline to:"
+    "deadline": "Deadline",
+    "planned": "Planned",
+    "executing": "Executing",
+    "done": "Done",
+    "singleTask": "Task",
+    "changeStatus": "Change status"
     
 }
