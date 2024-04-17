@@ -1,5 +1,11 @@
 {    
 
     "@@locale": "en",
-    "language": "English"
+    "language": "English",
+    "appTitle": "Welcome to Task App",
+    "allTasksLabel": "All tasks",
+    "delete": "Delete",
+    "edit": "Edit",
+    "deadline": "Deadline to:"
+    
 }

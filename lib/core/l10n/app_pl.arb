@@ -1,4 +1,9 @@
 {
     "@@locale": "pl",
-    "language": "Polski"
+    "language": "Polski",
+    "appTitle": "Witaj w menadżerze zadań",
+    "allTasksLabel": "Wszystkie zadania",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "deadline": "Deadline do:"
 }
