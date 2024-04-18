@@ -1,9 +1,14 @@
 {
     "@@locale": "pl",
     "language": "Polski",
-    "appTitle": "Witaj w menadżerze zadań",
+    "appTitle": "Task App",
     "allTasksLabel": "Wszystkie zadania",
     "delete": "Usuń",
     "edit": "Edytuj",
-    "deadline": "Deadline do:"
+    "deadline": "Deadline",
+    "planned": "Zaplanowano",
+    "executing": "W trakcie",
+    "done": "Ukończono",
+    "singleTask": "Zadanie",
+    "changeStatus": "Zmień status zadania"
 }

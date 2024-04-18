@@ -32,4 +32,28 @@ class TaskRepositoryImpl extends TaskRepository {
       return Left(e as Exception);
     }
   }
+
+  @override
+  Future<Either<Exception, void>> deleteTask(DeleteTaskParams params) async {
+    try {
+      final delete = await _local.deleteTask(params);
+      return Right(delete);
+    } on HiveException catch (e) {
+      return Left(e);
+    } catch (e) {
+      return Left(e as Exception);
+    }
+  }
+
+  @override
+  Future<Either<Exception, void>> updateTask(UpdateTaskParams params) async {
+    try {
+      final update = await _local.updateTask(params);
+      return Right(update);
+    } on HiveException catch (e) {
+      return Left(e);
+    } on Exception catch (e) {
+      return Left(e);
+    }
+  }
 }

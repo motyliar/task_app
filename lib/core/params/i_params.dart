@@ -1,1 +1,3 @@
-class IParams {}
+class IParams {
+  const IParams();
+}

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/core/themes/text_style.dart';
+import 'package:task_app/presentation/app/business/cubit/localization_switch_cubit.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar(
@@ -40,13 +43,17 @@ class CustomSliverAppBar extends StatelessWidget {
               children: [
                 Text(l10n.appTitle, style: AppTextStyles.headersMedium),
                 const Gap(20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.notification_add),
-                    Gap(20),
-                    Icon(Icons.language),
-                    Gap(10)
+                    const Icon(Icons.notifications),
+                    const Gap(20),
+                    GestureDetector(
+                        onTap: () =>
+                            BlocProvider.of<LocalizationSwitchCubit>(context)
+                                .changeLanguage(),
+                        child: const Icon(Icons.translate)),
+                    const Gap(10)
                   ],
                 ),
               ],

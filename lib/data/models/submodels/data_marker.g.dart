@@ -65,18 +65,3 @@ Map<String, dynamic> _$$DataMarkerModelImplToJson(
       'month': instance.month,
       'year': instance.year,
     };
-
-_$DateStatModelImpl _$$DateStatModelImplFromJson(Map<String, dynamic> json) =>
-    _$DateStatModelImpl(
-      create: DataMarkerModel.fromJson(json['create'] as Map<String, dynamic>),
-      execution:
-          DataMarkerModel.fromJson(json['execution'] as Map<String, dynamic>),
-      done: DataMarkerModel.fromJson(json['done'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$DateStatModelImplToJson(_$DateStatModelImpl instance) =>
-    <String, dynamic>{
-      'create': instance.create,
-      'execution': instance.execution,
-      'done': instance.done,
-    };
