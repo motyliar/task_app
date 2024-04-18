@@ -4,16 +4,21 @@ import 'package:gap/gap.dart';
 import 'package:task_app/core/params/task_params.dart';
 import 'package:task_app/core/services/get_it/task_container.dart';
 import 'package:task_app/core/utils/extensions.dart';
+import 'package:task_app/domain/entity/task_entity.dart';
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/logic/dashboard_helpers.dart';
 import 'package:task_app/presentation/dashboard/business/switch_button.dart';
 
-Future<dynamic> AddTaskBottomSheet(
+Future<dynamic> taskBottomSheet(
   BuildContext context,
   TextEditingController titleController,
   TextEditingController descriptionController,
-  TextEditingController ownerController,
-) {
+  TextEditingController ownerController, {
+  TaskEntity? task,
+  bool isAdd = false,
+}) {
+  DashboardHelpers.setInitialControllerText(
+      titleController, descriptionController, ownerController, task);
   return showModalBottomSheet(
       context: context,
       builder: (context) => MultiBlocProvider(
@@ -66,7 +71,6 @@ Future<dynamic> AddTaskBottomSheet(
                                   context
                                       .read<SwitchButtonCubit>()
                                       .changePriority();
-                                  print(state.isPriority);
                                 },
                                 child: _CheckBox(
                                   visible: state.isPriority,
@@ -99,7 +103,30 @@ Future<dynamic> AddTaskBottomSheet(
                       return BlocBuilder<SwitchButtonCubit, SwitchButtonState>(
                         builder: (context, switchState) {
                           return ElevatedButton(
-                              onPressed: () => context
+                              onPressed: () => isAdd
+                                  ? context
+                                      .read<TasksHandlerCubit>()
+                                      .updateTask(UpdateTaskParams(
+                                          id: task!.id,
+                                          task:
+                                              DashboardHelpers
+                                                  .convertUpdatedTaskToModel(
+                                                      title: titleController
+                                                          .text,
+                                                      description:
+                                                          descriptionController
+                                                              .text,
+                                                      owner: ownerController
+                                                          .text,
+                                                      deadline: switchState
+                                                          .deadline,
+                                                      status: task.status.name,
+                                                      stat: task.stat
+                                                          .toModel("none"),
+                                                      isPriority: switchState
+                                                          .isPriority,
+                                                      id: task.id)))
+                                  : context
                                       .read<TasksHandlerCubit>()
                                       .addTask(TaskParams(
                                           title: titleController.text,
@@ -109,11 +136,11 @@ Future<dynamic> AddTaskBottomSheet(
                                           deadline: switchState.deadline,
                                           owner: ownerController.text))
                                       .then((response) {
-                                    descriptionController.clear();
-                                    ownerController.clear();
-                                    titleController.clear();
-                                    Navigator.pop(context);
-                                  }),
+                                      descriptionController.clear();
+                                      ownerController.clear();
+                                      titleController.clear();
+                                      Navigator.pop(context);
+                                    }),
                               child: const Text("ADD"));
                         },
                       );
