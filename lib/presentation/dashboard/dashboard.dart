@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:task_app/core/constans/export.dart';
 import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/router/route_animation.dart';
 import 'package:task_app/core/themes/colors.dart';
-import 'package:task_app/presentation/app/business/cubit/get_tasks_cubit.dart';
+import 'package:task_app/core/themes/text_style.dart';
+import 'package:task_app/domain/subentity/task_status.dart';
 import 'package:task_app/presentation/app/view/widgets/loader.dart';
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/switch_button.dart';
@@ -17,6 +19,7 @@ const double _emptySpaceToEndPage = 100;
 TextEditingController _titleController = TextEditingController();
 TextEditingController _descriptionController = TextEditingController();
 TextEditingController _ownerController = TextEditingController();
+TextEditingController _searchController = TextEditingController();
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -39,13 +42,122 @@ class Dashboard extends StatelessWidget {
             slivers: [
               CustomSliverAppBar(l10n: l10n),
               SliverToBoxAdapter(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: MainLabelText(
-                    l10n: l10n,
-                    text: l10n.allTasksLabel,
-                  ),
-                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      MainLabelText(
+                        l10n: l10n,
+                        text: l10n.allTasksLabel,
+                      ),
+                      ElevatedButton(
+                          onPressed: () =>
+                              context.read<TasksHandlerCubit>().fetchTasks(),
+                          child: Text(
+                            l10n.all,
+                            style: AppTextStyles.descriptionMid,
+                          )),
+                      ElevatedButton(
+                          onPressed: () => showModalBottomSheet(
+                                context: context,
+                                builder: (context) => Padding(
+                                  padding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(context)
+                                        .viewInsets
+                                        .bottom,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Row(
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            context
+                                                .read<TasksHandlerCubit>()
+                                                .sortByStatus(
+                                                    TaskStatus.planned);
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            l10n.planned,
+                                            style: AppTextStyles.descriptionMid,
+                                          ),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            context
+                                                .read<TasksHandlerCubit>()
+                                                .sortByStatus(
+                                                    TaskStatus.executing);
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            l10n.executing,
+                                            style: AppTextStyles.descriptionMid,
+                                          ),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            context
+                                                .read<TasksHandlerCubit>()
+                                                .sortByStatus(TaskStatus.done);
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            l10n.done,
+                                            style: AppTextStyles.descriptionMid,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          child: Text(
+                            l10n.status,
+                            style: AppTextStyles.descriptionMid,
+                          )),
+                      ElevatedButton(
+                          onPressed: () => showModalBottomSheet(
+                                context: context,
+                                builder: (context) => Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 50,
+                                    margin: const EdgeInsets.all(10),
+                                    child: Row(
+                                      children: [
+                                        Text(l10n.search,
+                                            style:
+                                                AppTextStyles.descriptionSmall),
+                                        const Gap(10),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                          height: 50,
+                                          child: TextFormField(
+                                            controller: _searchController,
+                                            onChanged: (value) => context
+                                                .read<TasksHandlerCubit>()
+                                                .sortByName(
+                                                    _searchController.text),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          child: Text(
+                            l10n.owner,
+                            style: AppTextStyles.descriptionMid,
+                          )),
+                    ]),
               ),
               SliverToBoxAdapter(
                 child: BlocBuilder<TasksHandlerCubit, TasksHandlerState>(
