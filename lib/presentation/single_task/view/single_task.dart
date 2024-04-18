@@ -15,6 +15,8 @@ import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tas
 import 'package:task_app/presentation/dashboard/widgets/single_task.dart';
 import 'package:task_app/presentation/single_task/business/single_task_helpers.dart';
 
+const double _pageMargin = 20;
+
 class SingleTaskPage extends StatelessWidget {
   const SingleTaskPage({required this.task, super.key});
 
@@ -39,7 +41,7 @@ class SingleTaskPage extends StatelessWidget {
       ),
       body: SafeArea(
           child: Container(
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.all(_pageMargin),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

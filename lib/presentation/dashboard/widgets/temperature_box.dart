@@ -26,7 +26,7 @@ class TemperatureBox extends StatelessWidget {
             child: Column(
               children: [
                 const Text("Actual temp"),
-                Text(state),
+                Text(temperature),
               ],
             ),
           )),

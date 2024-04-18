@@ -7,6 +7,7 @@ part 'weather_model.g.dart';
 class WeatherModel with _$WeatherModel {
   const WeatherModel._();
   const factory WeatherModel({
+    // ignore: invalid_annotation_target
     @JsonKey(name: "temperature_2m") required double temperature,
   }) = _WeatherModel;
   factory WeatherModel.fromJson(Map<String, dynamic> json) =>

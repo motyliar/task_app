@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:task_app/core/exception/service_exception.dart';
-import 'package:task_app/core/params/weather_params.dart';
+
 import 'package:task_app/data/sources/remote/weather_remote_source.dart';
 import 'package:task_app/domain/entity/weather_entity.dart';
 import 'package:task_app/domain/repository/weather_repository.dart';
