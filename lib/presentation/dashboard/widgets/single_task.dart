@@ -70,12 +70,24 @@ class SingleTask extends StatelessWidget {
                         style: AppTextStyles.descriptionBig
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        DashboardHelpers.convertStatusToLocalizationName(
-                                task.status, context)
-                            .toUpperCase(),
-                        style: AppTextStyles.descriptionMid,
-                      )
+                      Row(
+                        children: [
+                          Visibility(
+                            visible: task.isPriority,
+                            child: const CircleAvatar(
+                              radius: 10,
+                              backgroundColor: Colors.red,
+                            ),
+                          ),
+                          const Gap(5),
+                          Text(
+                            DashboardHelpers.convertStatusToLocalizationName(
+                                    task.status, context)
+                                .toUpperCase(),
+                            style: AppTextStyles.descriptionMid,
+                          )
+                        ],
+                      ),
                     ],
                   ),
                   const Divider(),
