@@ -20,7 +20,7 @@ WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeatherModel {
-  @JsonKey(name: "temperature_2")
+  @JsonKey(name: "temperature_2m")
   String get temperature => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $WeatherModelCopyWith<$Res> {
           WeatherModel value, $Res Function(WeatherModel) then) =
       _$WeatherModelCopyWithImpl<$Res, WeatherModel>;
   @useResult
-  $Res call({@JsonKey(name: "temperature_2") String temperature});
+  $Res call({@JsonKey(name: "temperature_2m") String temperature});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ abstract class _$$WeatherModelImplCopyWith<$Res>
       __$$WeatherModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "temperature_2") String temperature});
+  $Res call({@JsonKey(name: "temperature_2m") String temperature});
 }
 
 /// @nodoc
@@ -99,14 +99,14 @@ class __$$WeatherModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WeatherModelImpl extends _WeatherModel {
   const _$WeatherModelImpl(
-      {@JsonKey(name: "temperature_2") required this.temperature})
+      {@JsonKey(name: "temperature_2m") required this.temperature})
       : super._();
 
   factory _$WeatherModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeatherModelImplFromJson(json);
 
   @override
-  @JsonKey(name: "temperature_2")
+  @JsonKey(name: "temperature_2m")
   final String temperature;
 
   @override
@@ -143,15 +143,15 @@ class _$WeatherModelImpl extends _WeatherModel {
 
 abstract class _WeatherModel extends WeatherModel {
   const factory _WeatherModel(
-          {@JsonKey(name: "temperature_2") required final String temperature}) =
-      _$WeatherModelImpl;
+      {@JsonKey(name: "temperature_2m")
+      required final String temperature}) = _$WeatherModelImpl;
   const _WeatherModel._() : super._();
 
   factory _WeatherModel.fromJson(Map<String, dynamic> json) =
       _$WeatherModelImpl.fromJson;
 
   @override
-  @JsonKey(name: "temperature_2")
+  @JsonKey(name: "temperature_2m")
   String get temperature;
   @override
   @JsonKey(ignore: true)
