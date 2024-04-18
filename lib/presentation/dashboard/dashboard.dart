@@ -6,7 +6,7 @@ import 'package:task_app/core/router/route_animation.dart';
 import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/presentation/app/business/cubit/get_tasks_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/switch_button.dart';
-import 'package:task_app/presentation/dashboard/widgets/add_task_bottom_sheet.dart';
+import 'package:task_app/presentation/dashboard/widgets/task_bottom_sheet.dart';
 import 'package:task_app/presentation/dashboard/widgets/custom_sliver_appbar.dart';
 import 'package:task_app/presentation/dashboard/widgets/main_label_text.dart';
 import 'package:task_app/presentation/dashboard/widgets/single_task.dart';
@@ -72,8 +72,12 @@ class Dashboard extends StatelessWidget {
           foregroundColor: AppColors.accent,
           backgroundColor: AppColors.accent,
           onPressed: () {
-            AddTaskBottomSheet(context, _titleController,
-                _descriptionController, _ownerController);
+            taskBottomSheet(
+              context,
+              _titleController,
+              _descriptionController,
+              _ownerController,
+            );
           },
           child: const Icon(
             Icons.add,
