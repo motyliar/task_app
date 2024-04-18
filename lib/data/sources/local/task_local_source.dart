@@ -48,8 +48,9 @@ class TaskLocalDataSourceImpl extends TaskLocalDataSource {
   Future<void> updateTask(UpdateTaskParams params) async {
     try {
       final index = await _findTaskIndex(params.id);
-      await localTaskDB.deleteAt(index);
-      await localTaskDB.put(index, params.task);
+      await localTaskDB
+          .deleteAt(index)
+          .then((_) async => await localTaskDB.put(index, params.task));
     } catch (e) {
       throw HiveException("Update exception: ${e.toString()}");
     }
