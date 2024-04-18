@@ -4,16 +4,20 @@ import 'package:gap/gap.dart';
 import 'package:task_app/core/constans/export.dart';
 import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/router/route_animation.dart';
+
 import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/core/themes/text_style.dart';
+
 import 'package:task_app/domain/subentity/task_status.dart';
 import 'package:task_app/presentation/app/view/widgets/loader.dart';
+import 'package:task_app/presentation/dashboard/business/cubit/get_weather_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/switch_button.dart';
 import 'package:task_app/presentation/dashboard/widgets/task_bottom_sheet.dart';
 import 'package:task_app/presentation/dashboard/widgets/custom_sliver_appbar.dart';
 import 'package:task_app/presentation/dashboard/widgets/main_label_text.dart';
 import 'package:task_app/presentation/dashboard/widgets/single_task.dart';
+import 'package:task_app/presentation/dashboard/widgets/temperature_box.dart';
 
 const double _emptySpaceToEndPage = 100;
 TextEditingController _titleController = TextEditingController();
@@ -32,8 +36,12 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return BlocProvider(
-      create: (context) => SwitchButtonCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SwitchButtonCubit(),
+        ),
+      ],
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: AppColors.scaffoldBackground,
@@ -41,6 +49,15 @@ class Dashboard extends StatelessWidget {
           child: CustomScrollView(
             slivers: [
               CustomSliverAppBar(l10n: l10n),
+              SliverToBoxAdapter(
+                child: BlocBuilder<GetWeatherCubit, String>(
+                  builder: (context, state) {
+                    return TemperatureBox(
+                      temperature: state,
+                    );
+                  },
+                ),
+              ),
               SliverToBoxAdapter(
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

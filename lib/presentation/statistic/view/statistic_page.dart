@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,8 +9,6 @@ import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/core/themes/text_style.dart';
 
 import 'package:task_app/domain/entity/task_entity.dart';
-import 'package:task_app/domain/subentity/data_marker.dart';
-import 'package:task_app/domain/subentity/task_status.dart';
 
 import 'package:task_app/presentation/dashboard/widgets/action_button.dart';
 import 'package:task_app/presentation/statistic/business/cubit/chart_stat_cubit.dart';
