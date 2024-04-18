@@ -15,6 +15,10 @@
     "search": "Szukaj:",
 
     "all": "Wszystko",
+    "day": "Dzień",
+    "month": "Miesiąc",
+    "year": "Rok",
+    "statistic": "Statystyki",
     "status": "Status",
     "owner": "Kto",
 

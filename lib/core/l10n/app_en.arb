@@ -16,6 +16,10 @@
     "search": "Search:",
 
     "all": "All",
+    "day": "Day",
+    "month": "Month",
+    "year": "Year",
+    "statistic": "Statistics",
     "status": "Status",
     "owner": "Owner",
 
