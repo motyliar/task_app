@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:task_app/core/params/task_params.dart';
 import 'package:task_app/domain/entity/task_entity.dart';
+import 'package:task_app/domain/subentity/task_status.dart';
 import 'package:task_app/domain/usecases/add_task_usecase.dart';
 import 'package:task_app/domain/usecases/delete_task_usecase.dart';
 import 'package:task_app/domain/usecases/get_task_usecase.dart';
@@ -108,5 +109,37 @@ class TasksHandlerCubit extends Cubit<TasksHandlerState> {
     return await _getTask
         .execute()
         .then((response) => response.fold((l) => throw l, (r) => r));
+  }
+
+  Future<void> sortByName(String name) async {
+    emit(TasksHandlerStateLoading(state.tasks));
+    var searchQuery = name.toLowerCase();
+    try {
+      if (name.isEmpty) {
+        await fetchTasks();
+      } else {
+        var tasks = state.tasks;
+        var sorted = tasks
+            .where(
+                (element) => element.owner.toLowerCase().contains(searchQuery))
+            .toList();
+        emit(TaskHandlerStateLoaded(sorted));
+      }
+    } catch (e) {
+      emit(TasksHandlerFailed(state.tasks));
+    }
+  }
+
+  void sortByStatus(TaskStatus status) {
+    emit(TasksHandlerStateLoading(state.tasks));
+
+    try {
+      var tasks = state.tasks;
+      var sorted = tasks.where((element) => element.status == status).toList();
+
+      emit(TasksHandlerState(tasks: sorted));
+    } catch (e) {
+      emit(TasksHandlerFailed(state.tasks));
+    }
   }
 }

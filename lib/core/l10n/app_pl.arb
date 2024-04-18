@@ -2,7 +2,7 @@
     "@@locale": "pl",
     "language": "Polski",
     "appTitle": "Task App",
-    "allTasksLabel": "Wszystkie zadania",
+    "allTasksLabel": "Sort",
     "delete": "Usuń",
     "edit": "Edytuj",
     "deadline": "Deadline",
@@ -12,6 +12,11 @@
     "singleTask": "Zadanie",
     "changeStatus": "Zmień status zadania",
     "loading": "Ładuje...",
+    "search": "Szukaj:",
+
+    "all": "Wszystko",
+    "status": "Status",
+    "owner": "Kto",
 
     "buttonAdd" : "DODAJ",
     "buttonEdit": "EDYTUJ"
