@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/themes/colors.dart';
+import 'package:task_app/data/models/submodels/data_stat_m.dart';
+import 'package:task_app/data/models/task_model.dart';
+import 'package:task_app/domain/entity/task_entity.dart';
 import 'package:task_app/domain/subentity/task_status.dart';
 
 class DashboardHelpers {
@@ -37,5 +40,37 @@ class DashboardHelpers {
       case TaskStatus.done:
         return l10n.done;
     }
+  }
+
+  static setInitialControllerText(
+      TextEditingController text,
+      TextEditingController description,
+      TextEditingController owner,
+      TaskEntity? task) {
+    if (task != null) {
+      text.text = task.title;
+      description.text = task.description;
+      owner.text = task.owner;
+    }
+  }
+
+  static TaskModel convertUpdatedTaskToModel(
+      {required String title,
+      required String description,
+      required String owner,
+      required DateTime deadline,
+      required String status,
+      required DataStatM stat,
+      required bool isPriority,
+      required String id}) {
+    return TaskModel(
+        title: title,
+        description: description,
+        deadline: deadline,
+        owner: owner,
+        status: status,
+        stat: stat,
+        isPriroity: isPriority,
+        id: id);
   }
 }
