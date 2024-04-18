@@ -10,6 +10,8 @@ import 'package:task_app/core/utils/extensions.dart';
 import 'package:task_app/presentation/app/business/cubit/localization_switch_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 
+const double spaceBetweenIconsInRow = 20;
+
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar(
       {super.key,
@@ -51,6 +53,17 @@ class CustomSliverAppBar extends StatelessWidget {
                   children: [
                     BlocBuilder<TasksHandlerCubit, TasksHandlerState>(
                       builder: (context, state) {
+                        return GestureDetector(
+                          onTap: () => Navigator.pushNamed(
+                              context, kStatisticPage,
+                              arguments: state.tasks),
+                          child: const Icon(Icons.bar_chart),
+                        );
+                      },
+                    ),
+                    const Gap(spaceBetweenIconsInRow),
+                    BlocBuilder<TasksHandlerCubit, TasksHandlerState>(
+                      builder: (context, state) {
                         var deadlineList = state.tasks
                             .where(
                               (element) =>
@@ -75,7 +88,7 @@ class CustomSliverAppBar extends StatelessWidget {
                         );
                       },
                     ),
-                    const Gap(20),
+                    const Gap(spaceBetweenIconsInRow),
                     GestureDetector(
                         onTap: () =>
                             BlocProvider.of<LocalizationSwitchCubit>(context)
