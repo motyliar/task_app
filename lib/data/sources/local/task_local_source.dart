@@ -8,6 +8,7 @@ abstract class TaskLocalDataSource {
   Future<void> addTask(TaskParams params);
   Future<List<TaskModel>> getTasks();
   Future<void> deleteTask(DeleteTaskParams params);
+  Future<void> updateTask(UpdateTaskParams params);
 }
 
 class TaskLocalDataSourceImpl extends TaskLocalDataSource {
@@ -40,6 +41,17 @@ class TaskLocalDataSourceImpl extends TaskLocalDataSource {
       await localTaskDB.deleteAt(index);
     } catch (e) {
       throw HiveException(e.toString());
+    }
+  }
+
+  @override
+  Future<void> updateTask(UpdateTaskParams params) async {
+    try {
+      final index = await _findTaskIndex(params.id);
+      await localTaskDB.deleteAt(index);
+      await localTaskDB.put(index, params.task);
+    } catch (e) {
+      throw HiveException("Update exception: ${e.toString()}");
     }
   }
 
