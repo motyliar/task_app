@@ -1,14 +1,17 @@
 part of 'tasks_handler_cubit.dart';
 
-class TasksHandlerState {
+class TasksHandlerState extends Equatable {
   const TasksHandlerState({this.tasks = const <TaskEntity>[]});
   final List<TaskEntity> tasks;
+
+  @override
+  List<Object> get props => [tasks];
 }
 
 class TasksHandlerStateLoading extends TasksHandlerState {
-  TasksHandlerStateLoading(List<TaskEntity> tasks) : super(tasks: tasks);
+  const TasksHandlerStateLoading(List<TaskEntity> tasks) : super(tasks: tasks);
 }
 
 class TasksHandlerFailed extends TasksHandlerState {
-  TasksHandlerFailed(List<TaskEntity> tasks) : super(tasks: tasks);
+  const TasksHandlerFailed(List<TaskEntity> tasks) : super(tasks: tasks);
 }

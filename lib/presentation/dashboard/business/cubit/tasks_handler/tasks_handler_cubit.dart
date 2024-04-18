@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:task_app/core/params/task_params.dart';
 import 'package:task_app/domain/entity/task_entity.dart';
@@ -19,7 +20,7 @@ class TasksHandlerCubit extends Cubit<TasksHandlerState> {
       : _addTask = addTask,
         _deleteTask = deleteTask,
         _updateTask = updateTask,
-        super(TasksHandlerStateLoading(const <TaskEntity>[]));
+        super(const TasksHandlerStateLoading(<TaskEntity>[]));
 
   Future<void> addTask(TaskParams params) async {
     return _handlingAddResponse(params);
