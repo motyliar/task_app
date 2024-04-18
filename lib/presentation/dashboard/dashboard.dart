@@ -5,6 +5,7 @@ import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/router/route_animation.dart';
 import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/presentation/app/business/cubit/get_tasks_cubit.dart';
+import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/switch_button.dart';
 import 'package:task_app/presentation/dashboard/widgets/task_bottom_sheet.dart';
 import 'package:task_app/presentation/dashboard/widgets/custom_sliver_appbar.dart';
@@ -45,7 +46,7 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               SliverToBoxAdapter(
-                child: BlocBuilder<GetTasksCubit, GetTasksState>(
+                child: BlocBuilder<TasksHandlerCubit, TasksHandlerState>(
                   builder: (context, state) {
                     return Column(
                       children: List.generate(
