@@ -8,7 +8,7 @@ part of 'weather_model.dart';
 
 _$WeatherModelImpl _$$WeatherModelImplFromJson(Map<String, dynamic> json) =>
     _$WeatherModelImpl(
-      temperature: json['temperature_2m'] as String,
+      temperature: (json['temperature_2m'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$WeatherModelImplToJson(_$WeatherModelImpl instance) =>

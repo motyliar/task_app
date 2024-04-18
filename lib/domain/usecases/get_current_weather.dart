@@ -9,7 +9,7 @@ class GetCurrentWeatherUsecase {
 
   final WeatherRepository _repository;
 
-  Future<Either<Exception, WeatherEntity>> execute(WeatherParams params) {
-    return _repository.getCurrentWeather(params);
+  Future<Either<Exception, WeatherEntity>> execute() {
+    return _repository.getCurrentWeather();
   }
 }

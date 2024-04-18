@@ -11,11 +11,10 @@ class WeatherRepositoryImpl extends WeatherRepository {
   final WeatherRemoteSource _remote;
 
   @override
-  Future<Either<Exception, WeatherEntity>> getCurrentWeather(
-      WeatherParams params) async {
+  Future<Either<Exception, WeatherEntity>> getCurrentWeather() async {
     try {
       return await _remote
-          .getCurrentWeather(params)
+          .getCurrentWeather()
           .then((response) => Right(response.toEntity()));
     } on ServiceException catch (e) {
       return Left(e);

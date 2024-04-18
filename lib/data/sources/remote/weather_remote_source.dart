@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:task_app/core/exception/service_exception.dart';
 
-import 'package:task_app/core/params/weather_params.dart';
 import 'package:task_app/data/models/weather_model.dart';
+import 'package:task_app/domain/helpers/get_local.dart';
 
 abstract class WeatherRemoteSource {
-  Future<WeatherModel> getCurrentWeather(WeatherParams params);
+  Future<WeatherModel> getCurrentWeather();
 }
 
 class WeatherRemoteSourceImpl extends WeatherRemoteSource {
@@ -15,10 +15,12 @@ class WeatherRemoteSourceImpl extends WeatherRemoteSource {
   final http.Client client;
 
   @override
-  Future<WeatherModel> getCurrentWeather(WeatherParams params) async {
+  Future<WeatherModel> getCurrentWeather() async {
+    var params = await GetLocalization().getParams();
     try {
       final response = await client.get(params.getUrl());
       final data = jsonDecode(response.body)['current'];
+      print(response.body);
       if (data != null) {
         return WeatherModel.fromJson(data);
       } else {

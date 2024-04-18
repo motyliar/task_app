@@ -7,10 +7,11 @@ part 'weather_model.g.dart';
 class WeatherModel with _$WeatherModel {
   const WeatherModel._();
   const factory WeatherModel({
-    @JsonKey(name: "temperature_2m") required String temperature,
+    @JsonKey(name: "temperature_2m") required double temperature,
   }) = _WeatherModel;
   factory WeatherModel.fromJson(Map<String, dynamic> json) =>
       _$WeatherModelFromJson(json);
 
-  WeatherEntity toEntity() => WeatherEntity(temperature: temperature);
+  WeatherEntity toEntity() =>
+      WeatherEntity(temperature: temperature.toString());
 }

@@ -21,7 +21,7 @@ WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WeatherModel {
   @JsonKey(name: "temperature_2m")
-  String get temperature => throw _privateConstructorUsedError;
+  double get temperature => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $WeatherModelCopyWith<$Res> {
           WeatherModel value, $Res Function(WeatherModel) then) =
       _$WeatherModelCopyWithImpl<$Res, WeatherModel>;
   @useResult
-  $Res call({@JsonKey(name: "temperature_2m") String temperature});
+  $Res call({@JsonKey(name: "temperature_2m") double temperature});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$WeatherModelCopyWithImpl<$Res, $Val extends WeatherModel>
       temperature: null == temperature
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$WeatherModelImplCopyWith<$Res>
       __$$WeatherModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "temperature_2m") String temperature});
+  $Res call({@JsonKey(name: "temperature_2m") double temperature});
 }
 
 /// @nodoc
@@ -90,7 +90,7 @@ class __$$WeatherModelImplCopyWithImpl<$Res>
       temperature: null == temperature
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
     ));
   }
 }
@@ -107,7 +107,7 @@ class _$WeatherModelImpl extends _WeatherModel {
 
   @override
   @JsonKey(name: "temperature_2m")
-  final String temperature;
+  final double temperature;
 
   @override
   String toString() {
@@ -144,7 +144,7 @@ class _$WeatherModelImpl extends _WeatherModel {
 abstract class _WeatherModel extends WeatherModel {
   const factory _WeatherModel(
       {@JsonKey(name: "temperature_2m")
-      required final String temperature}) = _$WeatherModelImpl;
+      required final double temperature}) = _$WeatherModelImpl;
   const _WeatherModel._() : super._();
 
   factory _WeatherModel.fromJson(Map<String, dynamic> json) =
@@ -152,7 +152,7 @@ abstract class _WeatherModel extends WeatherModel {
 
   @override
   @JsonKey(name: "temperature_2m")
-  String get temperature;
+  double get temperature;
   @override
   @JsonKey(ignore: true)
   _$$WeatherModelImplCopyWith<_$WeatherModelImpl> get copyWith =>

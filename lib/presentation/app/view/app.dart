@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:task_app/core/constans/export.dart';
+
 import 'package:task_app/core/router/app_router.dart';
 import 'package:task_app/core/services/get_it/task_container.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:task_app/presentation/app/business/cubit/localization_switch_cubit.dart';
+import 'package:task_app/presentation/dashboard/business/cubit/get_weather_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 
 class App extends StatelessWidget {
@@ -17,7 +20,10 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => taskLocator<TasksHandlerCubit>()..fetchTasks(),
         ),
-        BlocProvider(create: (context) => LocalizationSwitchCubit())
+        BlocProvider(create: (context) => LocalizationSwitchCubit()),
+        BlocProvider(
+            create: (context) =>
+                taskLocator<GetWeatherCubit>()..getWeatherFromDB()),
       ],
       child: BlocBuilder<LocalizationSwitchCubit, String>(
         builder: (context, state) {
