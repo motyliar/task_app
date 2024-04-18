@@ -11,6 +11,9 @@
     "executing": "Executing",
     "done": "Done",
     "singleTask": "Task",
-    "changeStatus": "Change status"
+    "changeStatus": "Change status",
+
+    "buttonAdd" : "ADD",
+    "buttonEdit": "EDIT"
     
 }
