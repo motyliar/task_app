@@ -5,6 +5,7 @@ import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/router/route_animation.dart';
 import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/presentation/app/business/cubit/get_tasks_cubit.dart';
+import 'package:task_app/presentation/app/view/widgets/loader.dart';
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/switch_button.dart';
 import 'package:task_app/presentation/dashboard/widgets/task_bottom_sheet.dart';
@@ -31,6 +32,7 @@ class Dashboard extends StatelessWidget {
     return BlocProvider(
       create: (context) => SwitchButtonCubit(),
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         backgroundColor: AppColors.scaffoldBackground,
         body: SafeArea(
           child: CustomScrollView(
@@ -48,6 +50,10 @@ class Dashboard extends StatelessWidget {
               SliverToBoxAdapter(
                 child: BlocBuilder<TasksHandlerCubit, TasksHandlerState>(
                   builder: (context, state) {
+                    if (state is TasksHandlerStateLoading) {
+                      return const Center(child: LoaderPage());
+                    }
+
                     return Column(
                       children: List.generate(
                           state.tasks.length,
@@ -74,6 +80,7 @@ class Dashboard extends StatelessWidget {
           backgroundColor: AppColors.accent,
           onPressed: () {
             taskBottomSheet(
+              buttonText: l10n.buttonAdd,
               context,
               _titleController,
               _descriptionController,
