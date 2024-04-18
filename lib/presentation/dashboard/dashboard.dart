@@ -17,6 +17,7 @@ import 'package:task_app/presentation/dashboard/widgets/task_bottom_sheet.dart';
 import 'package:task_app/presentation/dashboard/widgets/custom_sliver_appbar.dart';
 import 'package:task_app/presentation/dashboard/widgets/main_label_text.dart';
 import 'package:task_app/presentation/dashboard/widgets/single_task.dart';
+import 'package:task_app/presentation/dashboard/widgets/temperature_box.dart';
 
 const double _emptySpaceToEndPage = 100;
 TextEditingController _titleController = TextEditingController();
@@ -51,24 +52,8 @@ class Dashboard extends StatelessWidget {
               SliverToBoxAdapter(
                 child: BlocBuilder<GetWeatherCubit, String>(
                   builder: (context, state) {
-                    debugPrint(state);
-                    return Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                          padding: const EdgeInsets.all(5),
-                          width: 150,
-                          decoration: BoxDecoration(
-                            color: AppColors.doneColor,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Center(
-                            child: Column(
-                              children: [
-                                const Text("Actual temp"),
-                                Text(state),
-                              ],
-                            ),
-                          )),
+                    return TemperatureBox(
+                      temperature: state,
                     );
                   },
                 ),
