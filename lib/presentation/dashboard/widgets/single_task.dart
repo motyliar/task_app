@@ -10,8 +10,12 @@ import 'package:task_app/domain/entity/task_entity.dart';
 
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/logic/dashboard_helpers.dart';
+import 'package:task_app/presentation/dashboard/widgets/task_bottom_sheet.dart';
 
 const int _lenghtOfData = 16;
+TextEditingController _titleController = TextEditingController();
+TextEditingController _descriptionController = TextEditingController();
+TextEditingController _ownerController = TextEditingController();
 
 class SingleTask extends StatelessWidget {
   const SingleTask({
@@ -46,7 +50,14 @@ class SingleTask extends StatelessWidget {
             startActionPane:
                 ActionPane(motion: const StretchMotion(), children: [
               SlidableAction(
-                onPressed: (context) {},
+                onPressed: (context) => taskBottomSheet(
+                    buttonText: l10n.buttonEdit,
+                    context,
+                    _titleController,
+                    _descriptionController,
+                    _ownerController,
+                    task: task,
+                    isAdd: true),
                 label: l10n.edit,
                 icon: Icons.edit,
                 backgroundColor: Colors.green,
@@ -70,12 +81,24 @@ class SingleTask extends StatelessWidget {
                         style: AppTextStyles.descriptionBig
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        DashboardHelpers.convertStatusToLocalizationName(
-                                task.status, context)
-                            .toUpperCase(),
-                        style: AppTextStyles.descriptionMid,
-                      )
+                      Row(
+                        children: [
+                          Visibility(
+                            visible: task.isPriority,
+                            child: const CircleAvatar(
+                              radius: 10,
+                              backgroundColor: Colors.red,
+                            ),
+                          ),
+                          const Gap(5),
+                          Text(
+                            DashboardHelpers.convertStatusToLocalizationName(
+                                    task.status, context)
+                                .toUpperCase(),
+                            style: AppTextStyles.descriptionMid,
+                          )
+                        ],
+                      ),
                     ],
                   ),
                   const Divider(),

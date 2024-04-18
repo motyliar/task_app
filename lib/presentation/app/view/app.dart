@@ -16,10 +16,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => taskLocator<GetTasksCubit>()..fetchTasks(),
-        ),
-        BlocProvider(
-          create: (context) => taskLocator<TasksHandlerCubit>(),
+          create: (context) => taskLocator<TasksHandlerCubit>()..fetchTasks(),
         ),
         BlocProvider(create: (context) => LocalizationSwitchCubit())
       ],

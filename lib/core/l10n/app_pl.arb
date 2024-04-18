@@ -10,5 +10,9 @@
     "executing": "W trakcie",
     "done": "Ukończono",
     "singleTask": "Zadanie",
-    "changeStatus": "Zmień status zadania"
+    "changeStatus": "Zmień status zadania",
+    "loading": "Ładuje...",
+
+    "buttonAdd" : "DODAJ",
+    "buttonEdit": "EDYTUJ"
 }

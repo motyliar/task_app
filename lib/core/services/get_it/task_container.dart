@@ -16,6 +16,7 @@ void taskInit() {
   taskLocator
     ..registerFactory(() => GetTasksCubit(getTask: taskLocator()))
     ..registerFactory(() => TasksHandlerCubit(
+        getTask: taskLocator(),
         addTask: taskLocator(),
         deleteTask: taskLocator(),
         updateTask: taskLocator()))

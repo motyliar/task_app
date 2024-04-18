@@ -1,25 +1,30 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:task_app/core/params/task_params.dart';
 import 'package:task_app/domain/entity/task_entity.dart';
 import 'package:task_app/domain/usecases/add_task_usecase.dart';
 import 'package:task_app/domain/usecases/delete_task_usecase.dart';
+import 'package:task_app/domain/usecases/get_task_usecase.dart';
 import 'package:task_app/domain/usecases/update_task_usecase.dart';
 
 part 'tasks_handler_state.dart';
 
 class TasksHandlerCubit extends Cubit<TasksHandlerState> {
+  final GetTaskUsecase _getTask;
   final AddTaskUseCase _addTask;
   final DeleteTaskUseCase _deleteTask;
   final UpdateTaskUsecase _updateTask;
   TasksHandlerCubit(
-      {required AddTaskUseCase addTask,
+      {required GetTaskUsecase getTask,
+      required AddTaskUseCase addTask,
       required DeleteTaskUseCase deleteTask,
       required UpdateTaskUsecase updateTask})
-      : _addTask = addTask,
+      : _getTask = getTask,
+        _addTask = addTask,
         _deleteTask = deleteTask,
         _updateTask = updateTask,
-        super(TasksHandlerStateLoading(const <TaskEntity>[]));
+        super(const TasksHandlerStateLoading(<TaskEntity>[]));
 
   Future<void> addTask(TaskParams params) async {
     return _handlingAddResponse(params);
@@ -33,10 +38,16 @@ class TasksHandlerCubit extends Cubit<TasksHandlerState> {
     return _handlingUpdateResponse(params);
   }
 
+  Future<void> fetchTasks() {
+    return _handleResponse();
+  }
+
   Future<void> _handlingAddResponse(TaskParams params) async {
+    emit(TasksHandlerStateLoading(state.tasks));
+    print(state);
     try {
-      _requestingToAdd(params);
-      emit(TasksHandlerState(tasks: state.tasks));
+      await _requestingToAdd(params);
+      await fetchTasks();
       debugPrint(state.toString());
     } catch (e) {
       emit(TasksHandlerFailed(state.tasks));
@@ -44,9 +55,10 @@ class TasksHandlerCubit extends Cubit<TasksHandlerState> {
   }
 
   Future<void> _handlingDeleteResponse(DeleteTaskParams params) async {
+    emit(TasksHandlerStateLoading(state.tasks));
     try {
-      _requestingToDelete(params);
-      emit(TasksHandlerState(tasks: state.tasks));
+      await _requestingToDelete(params);
+      await fetchTasks();
       debugPrint(state.toString());
     } catch (e) {
       emit(TasksHandlerFailed(state.tasks));
@@ -54,9 +66,10 @@ class TasksHandlerCubit extends Cubit<TasksHandlerState> {
   }
 
   Future<void> _handlingUpdateResponse(UpdateTaskParams params) async {
+    emit(TasksHandlerStateLoading(state.tasks));
     try {
-      _requestingToUpdate(params);
-      emit(TasksHandlerState(tasks: state.tasks));
+      await _requestingToUpdate(params);
+      await fetchTasks();
       debugPrint(state.toString());
     } catch (e) {
       emit(TasksHandlerFailed(state.tasks));
@@ -79,5 +92,21 @@ class TasksHandlerCubit extends Cubit<TasksHandlerState> {
     return await _updateTask
         .execute(params)
         .then((resposne) => resposne.fold((l) => throw l, (r) => r));
+  }
+
+  Future<void> _handleResponse() async {
+    emit(TasksHandlerStateLoading(state.tasks));
+    try {
+      final response = await _getResponse();
+      emit(TaskHandlerStateLoaded(response));
+    } catch (e) {
+      emit(TasksHandlerFailed(state.tasks));
+    }
+  }
+
+  Future<List<TaskEntity>> _getResponse() async {
+    return await _getTask
+        .execute()
+        .then((response) => response.fold((l) => throw l, (r) => r));
   }
 }
