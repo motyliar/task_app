@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:task_app/core/constans/export.dart';
 import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/core/themes/text_style.dart';
 import 'package:task_app/presentation/app/business/cubit/localization_switch_cubit.dart';
+import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar(
@@ -46,7 +48,30 @@ class CustomSliverAppBar extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Icon(Icons.notifications),
+                    BlocBuilder<TasksHandlerCubit, TasksHandlerState>(
+                      builder: (context, state) {
+                        var priorityList = state.tasks
+                            .where(
+                              (element) => element.isPriority == true,
+                            )
+                            .toList();
+
+                        return GestureDetector(
+                          onTap: () => priorityList.isNotEmpty
+                              ? Navigator.pushNamed(
+                                  context,
+                                  kPriorityPage,
+                                  arguments: priorityList,
+                                )
+                              : null,
+                          child: Badge(
+                              label: Text(priorityList.length.toString()),
+                              child: Opacity(
+                                  opacity: priorityList.isNotEmpty ? 1.0 : 0.5,
+                                  child: const Icon(Icons.notifications))),
+                        );
+                      },
+                    ),
                     const Gap(20),
                     GestureDetector(
                         onTap: () =>
