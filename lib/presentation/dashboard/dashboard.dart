@@ -51,6 +51,9 @@ class Dashboard extends StatelessWidget {
                       children: List.generate(
                           state.tasks.length,
                           (index) => SingleTask(
+                                onTap: () => Navigator.pushNamed(
+                                    context, kSingleTask,
+                                    arguments: state.tasks[index]),
                                 task: state.tasks[index],
                               )),
                     );
