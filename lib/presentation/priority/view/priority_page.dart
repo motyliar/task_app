@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/core/constans/export.dart';
+import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/router/route_animation.dart';
 import 'package:task_app/core/themes/colors.dart';
+import 'package:task_app/core/themes/text_style.dart';
 import 'package:task_app/domain/entity/task_entity.dart';
 import 'package:task_app/presentation/dashboard/widgets/single_task.dart';
 
@@ -19,9 +21,15 @@ class PriorityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          l10n.deadline,
+          style: AppTextStyles.descriptionBig,
+        ),
+      ),
       body: SingleChildScrollView(
           child: Column(
         children: List.generate(

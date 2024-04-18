@@ -23,7 +23,7 @@ class MainLabelText extends StatelessWidget {
         children: [
           Text(
             text,
-            style: AppTextStyles.headersBig,
+            style: AppTextStyles.headersMedium,
           ),
           const Divider()
         ],

@@ -3,7 +3,7 @@
     "@@locale": "en",
     "language": "English",
     "appTitle": "Task App",
-    "allTasksLabel": "All tasks",
+    "allTasksLabel": "Sort",
     "delete": "Delete",
     "edit": "Edit",
     "deadline": "Deadline",
@@ -13,8 +13,19 @@
     "singleTask": "Task",
     "changeStatus": "Change status",
     "loading": "Loading...",
+    "search": "Search:",
+
+    "all": "All",
+    "day": "Day",
+    "month": "Month",
+    "year": "Year",
+    "statistic": "Statistics",
+    "status": "Status",
+    "owner": "Owner",
 
     "buttonAdd" : "ADD",
     "buttonEdit": "EDIT"
+
+
     
 }

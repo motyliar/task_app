@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:task_app/core/params/task_params.dart';
-import 'package:task_app/core/services/get_it/task_container.dart';
 import 'package:task_app/core/utils/extensions.dart';
 import 'package:task_app/domain/entity/task_entity.dart';
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
