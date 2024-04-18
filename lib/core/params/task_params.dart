@@ -12,13 +12,13 @@ class TaskParams extends IParams {
   final String description;
   final DateTime deadline;
   final String owner;
-  final bool? isPriority;
+  final bool isPriority;
   TaskParams({
     required this.title,
     required this.description,
     required this.deadline,
     required this.owner,
-    this.isPriority = false,
+    required this.isPriority,
   });
 
   final stat = DataStatM(
@@ -37,7 +37,7 @@ class TaskParams extends IParams {
         owner: owner,
         status: TaskStatus.planned.name,
         stat: stat,
-        isPriroity: isPriority ?? false);
+        isPriroity: isPriority);
   }
 }
 

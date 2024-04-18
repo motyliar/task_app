@@ -30,6 +30,7 @@ class TaskModel with _$TaskModel {
       title: title,
       description: description,
       deadline: deadline,
+      isPriority: isPriroity,
       owner: owner,
       status: convertStatus(status),
       stat: stat.toEntity());
