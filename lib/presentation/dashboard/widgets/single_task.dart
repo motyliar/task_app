@@ -50,9 +50,14 @@ class SingleTask extends StatelessWidget {
             startActionPane:
                 ActionPane(motion: const StretchMotion(), children: [
               SlidableAction(
-                onPressed: (context) => taskBottomSheet(context,
-                    _titleController, _descriptionController, _ownerController,
-                    task: task, isAdd: true),
+                onPressed: (context) => taskBottomSheet(
+                    buttonText: l10n.buttonEdit,
+                    context,
+                    _titleController,
+                    _descriptionController,
+                    _ownerController,
+                    task: task,
+                    isAdd: true),
                 label: l10n.edit,
                 icon: Icons.edit,
                 backgroundColor: Colors.green,

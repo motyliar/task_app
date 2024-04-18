@@ -31,9 +31,6 @@ Future<dynamic> taskBottomSheet(
                 BlocProvider(
                   create: (context) => SwitchButtonCubit(),
                 ),
-                BlocProvider(
-                  create: (context) => taskLocator<TasksHandlerCubit>(),
-                ),
               ],
               child: Form(
                   child: Padding(
