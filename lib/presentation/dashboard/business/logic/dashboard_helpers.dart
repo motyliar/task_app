@@ -21,11 +21,11 @@ class DashboardHelpers {
   static Color checkStatus(TaskStatus status) {
     switch (status) {
       case TaskStatus.planned:
-        return Colors.red.withOpacity(0.3);
+        return AppColors.plannedColor;
       case TaskStatus.executing:
-        return AppColors.lightBackground;
+        return AppColors.executingColor;
       case TaskStatus.done:
-        return Colors.green.withOpacity(0.5);
+        return AppColors.doneColor;
     }
   }
 

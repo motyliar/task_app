@@ -4,7 +4,6 @@ import 'package:task_app/core/constans/export.dart';
 import 'package:task_app/domain/entity/task_entity.dart';
 
 import 'package:task_app/presentation/dashboard/dashboard.dart';
-import 'package:task_app/presentation/dashboard/widgets/single_task.dart';
 import 'package:task_app/presentation/error/view/error_page.dart';
 import 'package:task_app/presentation/priority/view/priority_page.dart';
 import 'package:task_app/presentation/single_task/view/single_task.dart';
