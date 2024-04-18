@@ -73,4 +73,15 @@ class DashboardHelpers {
         isPriroity: isPriority,
         id: id);
   }
+
+  static clearControllersWithPop(
+      TextEditingController titleController,
+      TextEditingController descriptionController,
+      TextEditingController ownerController,
+      BuildContext context) {
+    titleController.clear();
+    descriptionController.clear();
+    ownerController.clear();
+    Navigator.of(context).pop();
+  }
 }
