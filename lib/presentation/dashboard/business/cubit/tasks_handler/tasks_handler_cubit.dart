@@ -29,8 +29,8 @@ class TasksHandlerCubit extends Cubit<TasksHandlerState> {
     return _handlingDeleteResponse(params);
   }
 
-  Future<void> updateTask(DeleteTaskParams params) async {
-    return _handlingDeleteResponse(params);
+  Future<void> updateTask(UpdateTaskParams params) async {
+    return _handlingUpdateResponse(params);
   }
 
   Future<void> _handlingAddResponse(TaskParams params) async {
