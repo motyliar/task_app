@@ -6,6 +6,7 @@ import 'package:task_app/core/constans/export.dart';
 import 'package:task_app/core/l10n/l10n.dart';
 import 'package:task_app/core/themes/colors.dart';
 import 'package:task_app/core/themes/text_style.dart';
+import 'package:task_app/core/utils/extensions.dart';
 import 'package:task_app/presentation/app/business/cubit/localization_switch_cubit.dart';
 import 'package:task_app/presentation/dashboard/business/cubit/tasks_handler/tasks_handler_cubit.dart';
 
@@ -50,24 +51,26 @@ class CustomSliverAppBar extends StatelessWidget {
                   children: [
                     BlocBuilder<TasksHandlerCubit, TasksHandlerState>(
                       builder: (context, state) {
-                        var priorityList = state.tasks
+                        var deadlineList = state.tasks
                             .where(
-                              (element) => element.isPriority == true,
+                              (element) =>
+                                  element.deadline.toString().cut(10) ==
+                                  DateTime.now().toString().cut(10),
                             )
                             .toList();
 
                         return GestureDetector(
-                          onTap: () => priorityList.isNotEmpty
+                          onTap: () => deadlineList.isNotEmpty
                               ? Navigator.pushNamed(
                                   context,
                                   kPriorityPage,
-                                  arguments: priorityList,
+                                  arguments: deadlineList,
                                 )
                               : null,
                           child: Badge(
-                              label: Text(priorityList.length.toString()),
+                              label: Text(deadlineList.length.toString()),
                               child: Opacity(
-                                  opacity: priorityList.isNotEmpty ? 1.0 : 0.5,
+                                  opacity: deadlineList.isNotEmpty ? 1.0 : 0.5,
                                   child: const Icon(Icons.notifications))),
                         );
                       },
