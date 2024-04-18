@@ -112,7 +112,8 @@ Future<dynamic> taskBottomSheet(
                                 onPressed: () => isAdd
                                     ? context
                                         .read<TasksHandlerCubit>()
-                                        .updateTask(UpdateTaskParams(
+                                        .updateTask(
+                                          UpdateTaskParams(
                                             id: task!.id,
                                             task: DashboardHelpers
                                                 .convertUpdatedTaskToModel(
@@ -128,7 +129,19 @@ Future<dynamic> taskBottomSheet(
                                                         .toModel("none"),
                                                     isPriority:
                                                         switchState.isPriority,
-                                                    id: task.id)))
+                                                    id: task.id),
+                                          ),
+                                        )
+                                        .then(
+                                        (_) {
+                                          DashboardHelpers
+                                              .clearControllersWithPop(
+                                                  titleController,
+                                                  descriptionController,
+                                                  ownerController,
+                                                  context);
+                                        },
+                                      )
                                     : context
                                         .read<TasksHandlerCubit>()
                                         .addTask(TaskParams(
@@ -138,11 +151,13 @@ Future<dynamic> taskBottomSheet(
                                             isPriority: switchState.isPriority,
                                             deadline: switchState.deadline,
                                             owner: ownerController.text))
-                                        .then((response) {
-                                        descriptionController.clear();
-                                        ownerController.clear();
-                                        titleController.clear();
-                                        Navigator.pop(context);
+                                        .then((_) {
+                                        DashboardHelpers
+                                            .clearControllersWithPop(
+                                                titleController,
+                                                descriptionController,
+                                                ownerController,
+                                                context);
                                       }),
                                 child: Text(buttonText));
                           },
